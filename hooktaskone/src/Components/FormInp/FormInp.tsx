@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
-
+import "./index.css"
 interface FormValues {
   username: string;
   password: string;
@@ -19,7 +19,7 @@ const FormInp: React.FC = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div>
+      <div className='inputs_top'>
         <label htmlFor="username">Username:</label>
         <input
           id="username"
@@ -31,7 +31,7 @@ const FormInp: React.FC = () => {
         />
         {errors.username && <p>{errors.username.message}</p>}
       </div>
-      <div>
+      <div className='inputs_top'>
         <label htmlFor="email">Email:</label>
         <input
           id="email"
@@ -43,7 +43,7 @@ const FormInp: React.FC = () => {
         {errors.email && <p>{errors.email.message}</p>}
       </div>
 
-      <div>
+      <div className='inputs_top'>
         <label htmlFor="password">Password:</label>
         <input
           id="password"
@@ -55,7 +55,7 @@ const FormInp: React.FC = () => {
         />
         {errors.password && <p>{errors.password.message}</p>}
       </div>
-      <div>
+      <div className='inputs_top'>
         <label htmlFor="confirmpassword">Confirm Password:</label>
         <input
           id="confirmpassword"
@@ -68,7 +68,7 @@ const FormInp: React.FC = () => {
         />
         {errors.confirmpassword && <p>{errors.confirmpassword.message}</p>}
       </div>
-      <div>
+      <div className='inputs_top'>
         <label htmlFor="age">Age:</label>
         <input
           id="age"
@@ -80,7 +80,7 @@ const FormInp: React.FC = () => {
         />
         {errors.age && <p>{errors.age.message}</p>}
       </div>
-      <div>
+      <div className='check_input'>
         <label htmlFor="checkbox">Checkbox:</label>
         <input
           id="checkbox"
