@@ -1,17 +1,21 @@
 import React from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import "./index.css"
+import "./index.css";
+
 interface FormValues {
   username: string;
   password: string;
   confirmpassword: string;
   email: string;
-  age: number; 
-  checkbox: boolean; 
+  age: number;
+  checkbox: boolean;
 }
 
 const FormInp: React.FC = () => {
-  const { register, handleSubmit, formState: { errors }, getValues } = useForm<FormValues>();
+
+  const { register, handleSubmit, formState: { errors }, watch } = useForm<FormValues>();
+
+  const password = watch('password');  
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     console.log(data);
@@ -31,6 +35,7 @@ const FormInp: React.FC = () => {
         />
         {errors.username && <p>{errors.username.message}</p>}
       </div>
+
       <div className='inputs_top'>
         <label htmlFor="email">Email:</label>
         <input
@@ -55,6 +60,7 @@ const FormInp: React.FC = () => {
         />
         {errors.password && <p>{errors.password.message}</p>}
       </div>
+
       <div className='inputs_top'>
         <label htmlFor="confirmpassword">Confirm Password:</label>
         <input
@@ -63,11 +69,12 @@ const FormInp: React.FC = () => {
           {...register("confirmpassword", { 
             required: 'You must confirm your password',
             validate: (value) =>
-              value === getValues('password') || 'Passwords do not match' 
+              value === password || 'Passwords do not match'   
           })}
         />
         {errors.confirmpassword && <p>{errors.confirmpassword.message}</p>}
       </div>
+
       <div className='inputs_top'>
         <label htmlFor="age">Age:</label>
         <input
@@ -80,6 +87,7 @@ const FormInp: React.FC = () => {
         />
         {errors.age && <p>{errors.age.message}</p>}
       </div>
+
       <div className='check_input'>
         <label htmlFor="checkbox">Checkbox:</label>
         <input
@@ -95,3 +103,11 @@ const FormInp: React.FC = () => {
 };
 
 export default FormInp;
+
+
+
+
+
+
+
+
